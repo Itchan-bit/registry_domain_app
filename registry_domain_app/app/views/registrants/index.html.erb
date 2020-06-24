@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Registrants</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Voice</th>
+      <th>Fax</th>
+      <th>Email</th>
+      <th>Organization</th>
+      <th>Address</th>
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @registrants.each do |registrant| %>
+      <tr>
+        <td><%= registrant.addresses.name %></td>
+        <td><%= registrant.voice %></td>
+        <td><%= registrant.fax %></td>
+        <td><%= registrant.email %></td>
+        <td><%= registrant.addresses.organization %></td>
+        <td><%= registrant.addresses.street %> <%= registrant.addresses.city %> <%= registrant.addresses.state %> 
+        , <%= registrant.addresses.postalcode %> <%= registrant.addresses.countrycode %> </td>
+        <td><%= link_to 'Show', registrant %></td>
+        <td><%= link_to 'Edit', edit_registrant_path(registrant) %></td>
+        <td><%= link_to 'Destroy', registrant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Registrant', new_registrant_path %>
